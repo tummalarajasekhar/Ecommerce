@@ -1,0 +1,85 @@
+.goblin {
+    font-family: "Goblin One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .pressstart {
+    font-family: "Press Start 2P", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .permanent-marker {
+    font-family: "Permanent Marker", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .maiden {
+    font-family: "Maiden Orange", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .smokum{
+    font-family: "Smokum", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .bungee{
+    font-family: "Bungee Outline", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .rubik {
+    font-family: "Rubik Dirt", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .frijole-regular {
+    font-family: "Frijole", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+          
+  
+    
+  .stroke-text {
+    -webkit-text-stroke: 0.5px #FBB80F;
+  }
+  .stroke-text- {
+    -webkit-text-stroke: 1.5px #FBB80F;
+  }
+
+
+  /* neon text */
+ 
+
+  /* slide in */
+
+  @keyframes slide-in {
+    from {
+      transform: translatey(-10%);
+      opacity: 0;
+    }
+    to {
+      transform: translatey(0);
+      opacity: 1;
+    }
+  }
+  .animate-slide-in {
+    animation: slide-in 1.5s ease-out forwards;
+  }
+  @keyframes moveUpDown {
+    0% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+.tilt-button {
+  transition: transform 0.3s ease-in-out;
+}
+
+  
+  
+  
+  

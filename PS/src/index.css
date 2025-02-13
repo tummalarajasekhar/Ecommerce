@@ -1,0 +1,11 @@
+
+
+@import "tailwindcss";
+
+
+    .unlist {
+        @apply static text-[#FBB80F] hover:text-[#FBEE0F] hover:scale-110 transition duration-500 m-4 ease-in-out text-[15px] mt-2 p-2 hidden lg:block;
+    }
+    .productNav {
+        @apply bg-green-400 rounded-xl p-2 m-2 hover:bg-amber-100 hover:scale-110;
+    }
