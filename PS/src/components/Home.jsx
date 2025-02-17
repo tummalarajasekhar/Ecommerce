@@ -12,7 +12,7 @@ import { fetchCartItems } from '../createSlice/productSlice.js';
 
 
 
-function Home({ setauthOpen }) {
+function Home({ setauthOpen ,setPopMessage }) {
 
   const dispatch = useDispatch()
 
@@ -131,6 +131,7 @@ function Home({ setauthOpen }) {
 
                   setauthOpen={setauthOpen}
                   token={token?.token}
+                  setPopMessage={setPopMessage}
                   
 
 
@@ -149,6 +150,7 @@ function Home({ setauthOpen }) {
               // token={}
 
               setauthOpen={setauthOpen}
+              setPopMessage={setPopMessage}
               
 
             />

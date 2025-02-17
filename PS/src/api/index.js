@@ -14,6 +14,16 @@ export const getallproducts =async () => {
     }
 }
 
+export const generateotp=async(data)=>{
+    console.log(data)
+    
+
+    const response =await API.post('api/auth/generate-otp',data)
+    console.log(response.data)
+    return response.data
+   
+}
+
 
 export const Signup= async(data)=>{
    const response= await API.post('api/auth/register',data)

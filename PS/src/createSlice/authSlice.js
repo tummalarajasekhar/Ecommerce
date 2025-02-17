@@ -1,5 +1,6 @@
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
-import { Signup ,Login} from "../api";
+import { Signup ,Login,generateotp} from "../api";
+
 export const login= createAsyncThunk(
     "auth/login",
     async (data, { rejectWithValue }) => {
@@ -27,7 +28,7 @@ export const signup= createAsyncThunk(
 
             const data1 = await Signup(data)
 
-            console.log(data1)
+            // console.log(data1)
             
             
             return data1
@@ -37,13 +38,26 @@ export const signup= createAsyncThunk(
         }
     }
 )
+export const otpGenerator=createAsyncThunk(
+    "auth/otpGenerator",async(data,{rejectWithValue})=>{
+        try{
+        const data1=await generateotp(data)
+        return data1
+        }catch(error){
+        return rejectWithValue(error)
+        
+        }
+
+    }
+)
 
 
 
 const initialState={
     users:[],
     loading:false,
-    error:null
+    error:null,
+    
 }
 export const authSlice=createSlice({
     name:'auth',
@@ -82,7 +96,7 @@ export const authSlice=createSlice({
                 })
                 .addCase(login.rejected, (state, action) => {
                     console.log(action.payload)
-                    state.error = action.payload.response.data.message
+                    state.error = action.payload.response?.data.message
                     state.loading = false
                 })
                 .addCase(signup.pending, (state) => {
@@ -97,6 +111,14 @@ export const authSlice=createSlice({
                 .addCase(signup.rejected, (state, action) => {
                     console.log(action.payload)
                     state.error = action.payload.response.data.message
+                    state.loading = false
+                })
+               
+               
+               
+                .addCase(otpGenerator.rejected, (state, action) => {
+                    // console.log(action.payload.response.data.message)
+                    state.error = action.payload.response?.data.message
                     state.loading = false
                 })
                

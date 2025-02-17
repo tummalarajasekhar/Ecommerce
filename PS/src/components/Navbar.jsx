@@ -8,11 +8,11 @@ import { logout,setUser } from '../createSlice/authSlice';
 import { removeCart } from '../createSlice/productSlice';
 import { useDispatch } from 'react-redux';
 import { getUserFromToken } from '../decode/accessToken';
-import Poper from './Poper';
 
 
 
-function Navbar({authOpen,setauthOpen,userExists,setUserExists}) {
+
+function Navbar({authOpen,setauthOpen,userExists,setUserExists,setPopMessage}) {
   const dispatch=useDispatch()
   const [isOpen, setIsOpen] = useState(false); // State to toggle the menu
   
@@ -24,12 +24,13 @@ function Navbar({authOpen,setauthOpen,userExists,setUserExists}) {
 //   if (user.length>0) setUserExists(true)
 //   },[user])
   
-  const [pop,setPop]=useState(true)
+  
 
   const evaluatetoken=()=>{
     const user=getUserFromToken()
     if (user){
       setUserExists(true)
+      setPopMessage('Welcome Back !!')
       dispatch(setUser(JSON.parse(localStorage.getItem('token'))))
       
     }
@@ -70,6 +71,7 @@ function Navbar({authOpen,setauthOpen,userExists,setUserExists}) {
  
   const handleLogout = () => {
     dispatch(logout())
+    setPopMessage(' Logged Out !!')
     dispatch(removeCart())
     setUserExists(e=>!e)
     
@@ -78,7 +80,7 @@ function Navbar({authOpen,setauthOpen,userExists,setUserExists}) {
 
   return (
     <>
-      {authOpen && <Auth setAuthOpen={setauthOpen} setUserExists={setUserExists}/>}
+      {authOpen && <Auth setAuthOpen={setauthOpen} setUserExists={setUserExists} setPopMessage={setPopMessage}/>}
 
       <div
         className="h-auto bg-gradient-to-r from-[#8241B8]  to-[#6C33A3] "
@@ -125,16 +127,16 @@ function Navbar({authOpen,setauthOpen,userExists,setUserExists}) {
         {/* Sliding Menu */}
         <div
           ref={menuRef}
-          className={`fixed top-0 left-0 h-full w-[375px]   bg-white transform transition-transform duration-500 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          className={`z-500 fixed top-0 left-0 h-full w-[80%]   bg-white transform transition-transform duration-500 ${isOpen ? 'translate-x-0' : '-translate-x-full'
             }`}
         >
-          <div className="p-4 text-blue-500">
-            <h2 className="font-bold text-xl mb-4">Menu Content</h2>
+          <div className="p-12 text-blue-500">
+            <h2 className="font-bold text-4xl mb-4">Menu Content</h2>
             <ul>
-              <li className="mb-2">Home</li>
-              <li className="mb-2">About</li>
-              <li className="mb-2">Products</li>
-              <li className="mb-2">Contact</li>
+              <li className=" menulist">Home</li>
+              <li className=" menulist">About</li>
+              <li className=" menulist">Products</li>
+              <li className=" menulist">Contact</li>
             </ul>
           </div>
           {/* Close Button */}

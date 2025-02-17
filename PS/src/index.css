@@ -1,11 +1,62 @@
 
 
 @import "tailwindcss";
-
+@layer utilities {
+    @keyframes vanishIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8) rotate(-10deg);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+   
+        @keyframes fallIn {
+          from {
+            opacity: 0;
+            transform: translateY(-100px) scale(0.8) rotate(-10deg);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1) rotate(0deg);
+          }
+        }
+      
+        .animate-fall-in {
+          animation: fallIn 0.7s ease-out forwards;
+        }
+      
+      
+  
+    @keyframes vanishOut {
+      from {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+      to {
+        opacity: 0;
+        transform: scale(0.8) rotate(10deg);
+      }
+    }
+  
+    .animate-vanish-in {
+      animation: vanishIn 0.5s ease-out forwards;
+    }
+  
+    .animate-vanish-out {
+      animation: vanishOut 0.5s ease-in forwards;
+    }
+  }
+  
 
     .unlist {
         @apply static text-[#FBB80F] hover:text-[#FBEE0F] hover:scale-110 transition duration-500 m-4 ease-in-out text-[15px] mt-2 p-2 hidden lg:block;
     }
     .productNav {
         @apply bg-green-400 rounded-xl p-2 m-2 hover:bg-amber-100 hover:scale-110;
+    }
+    .menulist{
+        @apply text-green-500 text-4xl p-2 font-bold border-b-2 border-green-700 
     }

@@ -8,7 +8,7 @@ import { addCartItem,removeCartItem,setQuantityForCart } from '../createSlice/pr
 // import videobg from '../assets/card1.mp4'
 
 
-export default function Card({ product, setCart, cart = [], qty = 0, findUser = false, setauthOpen, token, handleCart }) {
+export default function Card({ product, setCart, cart = [], qty = 0, findUser = false, setauthOpen, token, handleCart,setPopMessage }) {
 
 
   const videoRef = useRef(null);
@@ -49,14 +49,16 @@ export default function Card({ product, setCart, cart = [], qty = 0, findUser = 
 
     else {
       const token = JSON.parse(localStorage.getItem('token')).token
+      setPopMessage(`${product.name} Added to Cart`)
       dispatch(addCartItem({ data: { productId: product._id, quantity: 1 }, ticket: token }))
     }
   }
   const handleRemoveFromCart=()=>
   {
-    console.log('raja')
+    
+    
     const userId=JSON.parse(localStorage.getItem('token')).user.id
-    // console.log(userId,product._id)
+    
     dispatch(removeCartItem({data:{productId:product._id,userId:userId}}))
   }
   const handleQuantity=(data)=>{
@@ -65,7 +67,7 @@ export default function Card({ product, setCart, cart = [], qty = 0, findUser = 
     
   }
 
-  // console.log(cart)
+  
 
   const handleMouseEnter = () => {
     if (videoRef.current) {

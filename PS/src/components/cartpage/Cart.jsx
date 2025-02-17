@@ -65,7 +65,7 @@ function Cart() {
       <div className='text-2xl font-black relative  border-t-4 border-green-950'>Total : {mainCart.reduce((sum, item) => sum + item.price * item.quantity, 0)}</div>
       </div>
 
-      <div className=' text-center bg-green-950 max-w-xl mx-auto text-[3rem] mb-4 hover:bg-green-900 text-white rounded-2xl'>Proceed to Pay</div>
+      <div className=' text-center bg-blue-500 max-w-xl mx-auto text-[3rem] mb-4 hover:bg-green-900 text-white rounded-2xl'>Proceed to Pay</div>
     
     </div>
 }
